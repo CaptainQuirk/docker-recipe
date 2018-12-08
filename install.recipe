@@ -1,0 +1,17 @@
+apt "Removing old docker packages"; do
+    packages docker,docker-engine,docker.io
+    action remove
+done
+
+apt "Installing needed dependencies"; do
+    packages apt-transport-https,ca-certificates,curl,software-properties-common
+done
+
+code "Remove useless apt gpg key"; do
+    code "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key remove -"
+done
+
+apt "Install right docker version"; do
+    package docker-ce
+    repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
+done
