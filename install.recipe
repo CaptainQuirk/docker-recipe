@@ -15,3 +15,23 @@ apt "Install right docker version"; do
     package docker-ce
     repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
 done
+
+download "Getting Docker Compose"; do
+    url "https://github.com/docker/compose/releases/download/1.17.0/docker-compose-$KERNEL-$ARCH"
+    path "$CACHE_DIR/docker-compose"
+done
+
+code "Moving Docker Compose"; do
+    code "mv $CACHE_DIR/docker-compose /usr/local/bin/docker-compose"
+    sudo true
+done
+
+code "Making Docker Compose executable"; do
+    code "chmod +x /usr/local/bin/docker-compose"
+    sudo true
+done
+
+code "Adding user to docker group"; do
+    code "usermod -aG docker $USER"
+    sudo true
+done
