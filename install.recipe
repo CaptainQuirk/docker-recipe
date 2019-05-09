@@ -13,7 +13,7 @@ done
 
 apt "Install right docker version"; do
     package docker-ce
-    repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
+    repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $UBUNTU_RELEASE stable"
 done
 
 download "Getting Docker Compose"; do
