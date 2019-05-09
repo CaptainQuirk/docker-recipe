@@ -8,7 +8,7 @@ apt "Installing needed dependencies"; do
 done
 
 code "Remove useless apt gpg key"; do
-    code "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key remove -"
+    code "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -"
 done
 
 apt "Install right docker version"; do
